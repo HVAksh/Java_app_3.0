@@ -64,16 +64,7 @@ pipeline{
                }
             }
        }
-        stage('Maven Build : maven'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
-                   
-                   mvnBuild()
-               }
-            }
-        }
-        stage ('Artifactory configuration') {
+       stage ('Artifactory configuration') {
             steps {
                 rtServer (
                     id: "jfrog-server",
