@@ -14,7 +14,13 @@ pipeline{
     }
 
     stages{
-         
+
+        stage('clean workspace'){
+                    when { expression {  params.action == 'create' } }
+            steps{
+                cleanWs()
+            }
+        }
         stage('Git Checkout'){
                     when { expression {  params.action == 'create' } }
             steps{
